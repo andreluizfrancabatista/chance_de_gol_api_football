@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste API Football</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚽ API Football Tester</h1>
+            <p>Teste controlado da API com proteção de limite de chamadas</p>
+        </div>
+
+        <div class="content">
+            <div class="config-section">
+                <h3>⚠️ Configuração Necessária</h3>
+                <p>Antes de usar, configure sua chave da API no arquivo <strong>config.js</strong> e adicione-o ao
+                    <strong>.gitignore</strong> para proteger suas credenciais.</p>
+                <p>Este teste faz apenas uma requisição por vez para economizar seu limite diário da API.</p>
+            </div>
+
+            <div class="controls">
+                <div class="form-group">
+                    <label for="league">Liga:</label>
+                    <select id="league">
+                        <option value="39">Premier League (Inglaterra)</option>
+                        <option value="140">La Liga (Espanha)</option>
+                        <option value="78">Bundesliga (Alemanha)</option>
+                        <option value="135">Serie A (Itália)</option>
+                        <option value="61">Ligue 1 (França)</option>
+                        <option value="71">Brasileirão</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="season">Temporada:</label>
+                    <select id="season">
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Status:</label>
+                    <select id="status">
+                        <option value="FT">Finalizados</option>
+                        <option value="NS">Não iniciados</option>
+                        <option value="LIVE">Ao vivo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="round">Rodada (opcional):</label>
+                    <input type="text" id="round" placeholder="Ex: Regular Season - 1">
+                </div>
+            </div>
+
+            <button class="btn" id="fetchBtn" onclick="fetchFixtures()">
+                🔍 Buscar Fixtures
+            </button>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Buscando dados... Por favor, aguarde.</p>
+            </div>
+
+            <div class="results" id="results">
+                <div class="stats" id="stats"></div>
+                <div class="fixtures-grid" id="fixtures"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="footballClient.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
